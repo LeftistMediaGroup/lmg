@@ -14,7 +14,7 @@ import Forehead from "/Photos/Forehead.png"
 
 
 
-export class Wade extends Component {
+export default class Wade extends Component {
   constructor(props) {
     super(props);
 
@@ -331,5 +331,3 @@ export class Wade extends Component {
     );
   }
 }
-
-export default Wade;

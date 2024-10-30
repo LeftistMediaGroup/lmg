@@ -94,6 +94,7 @@ export default class Home extends Component {
             </div>
           </div>
 
+
           <Card>
             <CardContent>
               <div className="row">
@@ -120,6 +121,7 @@ export default class Home extends Component {
           </Card>
         </CardContent>
       </Card>
+
     );
   }
 }

@@ -54,6 +54,13 @@ export default class Layout extends React.Component {
     this.setState({ component: value });
   }
 
+  setSocket = (socket_url) => {
+    let socket = io(socket_url);
+
+    socket.emit("database_init");
+
+    this.setState({ socket: socket })
+  }
 
   renderComponent = () => {
     if (this.state.component === "Home") {
