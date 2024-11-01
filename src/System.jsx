@@ -9,7 +9,7 @@ export default class System extends Component {
     super(props);
 
     this.state = {
-      socket_url: "ws://localhost:5501",
+      socket_url: `ws://${import.meta.env.VITE_HOST}`,
     };
   }
 

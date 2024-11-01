@@ -3,7 +3,6 @@ import { Form } from "react-bootstrap";
 
 import { Button, Card, CardContent } from "@mui/material";
 
-import socket from "../socket/socket";
 
 export default class Login extends Component {
   constructor(props) {

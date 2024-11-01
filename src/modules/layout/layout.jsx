@@ -18,6 +18,7 @@ import Music from "../home/projects/Music.jsx";
 
 import System from "../../System.jsx";
 import Dashboard_Login_Signup from "../account/Dashboard_Login_Signup.jsx";
+import { io } from "socket.io-client";
 
 export default class Layout extends React.Component {
   constructor(props) {
@@ -40,7 +41,7 @@ export default class Layout extends React.Component {
 
   renderAppBar = () => {
     if (this.state.is_loggedin === true) {
-      return <BottomBar BottomBarComponent={this.state.BottomBarComponent} username={this.state.username} />;
+      return <BottomAppBar BottomBarComponent={this.state.BottomBarComponent} username={this.state.username} />;
     }
   };
 
