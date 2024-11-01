@@ -59,9 +59,7 @@ export default class SideBar extends React.Component {
       return (
         <Button
           onClick={() => {
-            if (this.state) {
-              this.props.getComponent("System");
-            }
+            this.props.getComponent("System");
           }}
         >
           System

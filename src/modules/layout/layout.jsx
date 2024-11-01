@@ -18,7 +18,6 @@ import Music from "../home/projects/Music.jsx";
 
 import System from "../../System.jsx";
 import Dashboard_Login_Signup from "../account/Dashboard_Login_Signup.jsx";
-import { io } from "socket.io-client";
 
 export default class Layout extends React.Component {
   constructor(props) {
@@ -32,7 +31,6 @@ export default class Layout extends React.Component {
       is_admin: false,
       is_database_found: false,
       is_admin_created: null,
-      socket: null,
       admin_pass: null
     };
   }
@@ -54,15 +52,6 @@ export default class Layout extends React.Component {
   set_component = (value) => {
     this.setState({ component: value });
   }
-
-  setSocket = (socket_url) => {
-    let socket = io(socket_url);
-
-    socket.emit("database_init");
-
-    this.setState({ socket: socket })
-  }
-
   renderComponent = () => {
     if (this.state.component === "Home") {
       return <Home />;
@@ -93,8 +82,6 @@ export default class Layout extends React.Component {
         set_admin_created={this.set_admin_created}
         set_admin_pass={this.set_admin_pass}
         set_component={this.set_component}
-        setSocket={this.setSocket}
-        socket={this.state.socket}
       />;
     }
     else if (this.state.component === "RegisterAdmin") {
