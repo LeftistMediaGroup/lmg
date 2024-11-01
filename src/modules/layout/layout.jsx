@@ -16,7 +16,7 @@ import Login from "../account/Login.jsx";
 import Education from "../education/Education.jsx";
 import Music from "../home/projects/Music.jsx";
 
-import System from "../../System.jsx";
+import System from "../system/System.jsx"; 
 import Dashboard_Login_Signup from "../account/Dashboard_Login_Signup.jsx";
 
 export default class Layout extends React.Component {
