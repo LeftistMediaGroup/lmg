@@ -25,6 +25,8 @@ export default class System extends Component {
 
       if (value) {
         console.log(value)
+        this.props.is_database_found(true)
+
       } else {
         console.log(value)
         this.props.is_database_found(false)
