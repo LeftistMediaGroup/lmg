@@ -10,14 +10,14 @@ import SideBar from "./SideBar.jsx";
 import TopBar from "./Topbar.jsx";
 
 import SignUpForm from "../account/SignUpForm.jsx";
-import Register_Admin from "../account/Register_admin.jsx";
+import Register_Admin from "../account/admin/Register_admin.jsx";
 import Login from "../account/Login.jsx";
 
 import Education from "../education/Education.jsx";
 import Music from "../home/projects/Music.jsx";
 
-import System from "../system/System.jsx"; 
-import Dashboard_Login_Signup from "../account/Dashboard_Login_Signup.jsx";
+import System from "../system/System.jsx";
+import Dashboard_Login_Signup from "../account/user/Dashboard_Login_Signup.jsx";
 
 export default class Layout extends React.Component {
   constructor(props) {
@@ -29,7 +29,7 @@ export default class Layout extends React.Component {
       component: "Home",
       BottomBarComponent: null,
       is_admin: false,
-      is_database_found: false,
+      is_database_found: null,
       is_admin_created: null,
       admin_pass: null
     };
@@ -157,7 +157,7 @@ export default class Layout extends React.Component {
   };
 
   is_database_found = (value) => {
-    if (value == true) {
+    if (value) {
       this.setState({ is_database_found: true })
     } else {
       this.setState({ is_database_found: false })
@@ -166,6 +166,7 @@ export default class Layout extends React.Component {
 
   set_admin_created = (value) => {
     console.log(`Value: ${value}`)
+
     if (value == true) {
       this.setState({ is_admin_created: true })
     } else if (value == false) {

@@ -3,49 +3,43 @@ import { Form } from "react-bootstrap";
 
 import { Accordion, AccordionDetails, AccordionSummary, Button, Card, CardContent } from "@mui/material";
 
+import { socket } from "../../system/System";
+
 
 export default class Register_Admin extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      cause: null,
-      organization: null,
-      admin_name: null,
-      password: null,
-      password2: null,
-      short_pass: null,
-      manifest_pass_out: null,
+      cause: "",
+      organization: "",
+      admin_name: "",
+      password: "",
+      short_pass: "",
       pass_error: false,
-      manifest: null,
       ready: null,
     };
   }
 
-  submit_manifest_pass = () => {
+  submit_manifest = () => {
+    console.log(`Submit Manifest Pass`);
     if (this.state.short_pass === this.state.manifest_pass_out) {
+      let data_out = {
+        cause: this.state.cause,
+        organization: this.state.organization,
+        admin_name: this.state.admin_name,
+        admin_pass: this.state.short_pass
+      }
 
-      console.log(`Submit Manifest Pass`);
+      console.log(JSON.stringify(data_out))
 
-      let cause = this.state.cause;
-      let organization = this.state.organization;
-      let admin_name = this.state.admin_name;
-      let admin_pass = this.state.short_pass;
-
-      console.log(`Data out`);
-
-      this.props.socket.emit("manifest_init", {
-        cause: cause,
-        organization: organization,
-        admin_name: admin_name,
-        admin_pass: admin_pass
-      })
-      this.set_pass_error(false);
+      socket.emit("manifest_init", data_out);
 
     } else {
-      this.set_pass_error(true);
+      //this.set_pass_error(true);
     }
   }
+
 
   set_pass_error = (result) => {
     this.setState({ pass_error: result })
@@ -101,6 +95,13 @@ export default class Register_Admin extends Component {
     })
   }
 
+  watch_socket = () => {
+    socket.on("encrypt_admin", (short_pass) => {
+      console.log(`Short: ${short_pass}`);
+      this.setState({ short_pass: short_pass });
+    });
+  }
+
   render_register = () => {
     if (this.state.ready === null) {
       return (
@@ -141,7 +142,7 @@ export default class Register_Admin extends Component {
                 onClick={() => {
                   console.log("Clicked!");
                   this.setState({ ready: true })
-                  this.props.socket.emit("Encrypt")
+                  socket.emit("Encrypt")
                 }}
                 role="button"
                 tabIndex={0}
@@ -172,7 +173,7 @@ export default class Register_Admin extends Component {
               </AccordionSummary>
 
               <AccordionDetails>
-                <p>{this.props.short_pass}</p>
+                <p>{this.state.short_pass}</p>
                 <br />
 
                 <Card>
@@ -192,7 +193,7 @@ export default class Register_Admin extends Component {
                         color="primary"
                         variant="outlined"
                         onClick={() => {
-                          this.submit_manifest_pass();
+                          this.submit_manifest();
                         }}
                         role="button"
                         tabIndex={0}
@@ -215,7 +216,10 @@ export default class Register_Admin extends Component {
 
   render() {
     return (
-      this.render_register()
+      <>
+        {this.render_register()}
+        {this.watch_socket()}
+      </>
     )
   }
 }

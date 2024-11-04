@@ -3,7 +3,7 @@ import { Button, Card, CardContent } from "@mui/material";
 import { io } from "socket.io-client";
 
 
-let socket = io(`ws://${import.meta.env.VITE_HOST}`)
+export const socket = io(`ws://${import.meta.env.VITE_HOST}`)
 
 
 export default class System extends Component {
@@ -14,7 +14,6 @@ export default class System extends Component {
   watch_Socket = () => {
     socket.on("connect", () => {
       console.log(`CONNECTED`)
-      this.props.is_database_found(true);
     })
 
     socket.on("admin_pass", (admin_pass) => {
@@ -22,20 +21,20 @@ export default class System extends Component {
       console.log(`Pass: ${admin_pass}`)
     });
 
-    socket.on("database_init", (value) => {
-      console.log(`DatabaseInit: ${value}`)
-      if (value == "True") {
-        this.props.set_admin_created(true);
-        this.props.set_component("Dashboard_Login_Signup")
+    socket.on("wade_init", (value) => {
+
+      if (value) {
+        console.log(value)
       } else {
-        this.props.set_admin_created(false);
+        console.log(value)
+        this.props.is_database_found(false)
       }
     })
 
   }
 
-  database_init = () => {
-    socket.emit("database_init")
+  wade_init = () => {
+    socket.emit("wade_init")
   }
 
   render() {
@@ -51,7 +50,7 @@ export default class System extends Component {
               variant="outlined"
               onClick={() => {
                 console.log("Clicked!");
-                this.database_init();
+                this.wade_init();
               }}
               role="button"
               tabIndex={0}

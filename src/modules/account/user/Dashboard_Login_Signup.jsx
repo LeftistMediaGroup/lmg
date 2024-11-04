@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 
 import { Card, CardContent } from "@mui/material";
-import Login from "./Login";
-import SignUpForm from "./SignUpForm";
+import Login from "../Login";
+import SignUpForm from "../SignUpForm";
 
 export default class Dashboard_Login_Signup extends Component {
   constructor(props) {
@@ -18,7 +18,8 @@ export default class Dashboard_Login_Signup extends Component {
           <h1>Dashboard Login / Signup</h1>
           <br />
 
-          <SignUpForm />
+          <SignUpForm
+         />
           <br />
           <Login />
         </CardContent>

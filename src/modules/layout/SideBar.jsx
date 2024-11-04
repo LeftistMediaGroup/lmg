@@ -55,7 +55,7 @@ export default class SideBar extends React.Component {
   };
 
   renderSystem = () => {
-    if (this.props.is_database_found === false) {
+    if (this.props.is_database_found === null) {
       return (
         <Button
           onClick={() => {
@@ -65,28 +65,47 @@ export default class SideBar extends React.Component {
           System
         </Button>
       );
-    } else if (this.props.is_database_found === true) {
-      if (this.props.is_admin_created === true) {
-        return (
-          this.renderAccount()
-        )
-      } else if (this.props.is_admin_created === false) {
-        return (
-          <Button
-            onClick={() => {
-              if (this.state) {
-                this.props.getComponent("RegisterAdmin");
-              }
-            }}
-          >
-            Register Admin
-          </Button>
-        )
+    } else if (this.props.is_database_found === false) {
+      return (
+        <Button
+          onClick={() => {
+            if (this.state) {
+              this.props.getComponent("RegisterAdmin");
+            }
+          }}
+        >
+          Register Admin
+        </Button>
+      )
 
-      }
     }
 
   };
+
+  /*
+   else if (this.props.is_database_found === true) {
+        if (this.props.is_admin_created === true) {
+          return (
+            this.renderAccount()
+          )
+        } else if (this.props.is_database_found === false) {
+          return (
+            <Button
+              onClick={() => {
+                if (this.state) {
+                  this.props.getComponent("RegisterAdmin");
+                }
+              }}
+            >
+              Register Admin
+            </Button>
+          )
+  
+        }
+      }
+   */
+
+
 
   renderAdminDashboard = () => {
     if (this.props.is_admin === true) {
