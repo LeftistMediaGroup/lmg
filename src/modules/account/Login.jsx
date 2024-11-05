@@ -13,6 +13,7 @@ export default class Login extends Component {
     this.state = {
       username: null,
       password: null,
+      login_fail: false,
     };
   }
 
@@ -51,19 +52,41 @@ export default class Login extends Component {
     socket.emit("log_in", data_out);
 
     socket.on("log_in", (data) => {
-      console.log(data)
+      if (data) {
+        console.log("LOGGED IN")
+      } else {
+        this.setState({ login_fail: true })
+      }
     })
+  }
+
+  login_fail = () => {
+    if (this.state.login_fail == true) {
+      return (
+        <>
+          <Card variant="outlined">
+            <CardContent>
+              <h4>Login Failed</h4>
+              <p>Please try again</p>
+            </CardContent>
+          </Card>
+          <br />
+        </>
+      )
+    }
   }
 
   render() {
     return (
-      <div className="row-centered" style={{ maxWidth: 500 }}>
+      <div className="row-centered" style={{ maxWidth: 500, margin: "auto" }}>
 
         <Card variant="outlined">
           <CardContent>
 
             <form className="row-centered">
               <p> Log in existing user</p>
+
+              {this.login_fail()}
 
               <Form.Group>
                 <Form.Control
