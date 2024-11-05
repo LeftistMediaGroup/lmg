@@ -3,6 +3,8 @@ import { Form } from "react-bootstrap";
 
 import { Button, Card, CardContent } from "@mui/material";
 
+import { socket } from "../system/System";
+
 
 export default class Login extends Component {
   constructor(props) {
@@ -38,23 +40,19 @@ export default class Login extends Component {
   }
 
 
-  submit_user = () => {
-    if (this.state.short_pass === this.state.password) {
-      console.log(`Data out`);
+  log_in = () => {
+    console.log(`Data out`);
 
-      let data_out = {
-        username: this.state.username,
-        password: this.state.short_pass
-      }
-
-      this.state.socket.emit("create_user", data_out);
-
-
-      this.set_pass_error(false);
-
-    } else {
-      this.set_pass_error(true);
+    let data_out = {
+      username: this.state.username,
+      password: this.state.password
     }
+
+    socket.emit("log_in", data_out);
+
+    socket.on("log_in", (data) => {
+      console.log(data)
+    })
   }
 
   render() {
@@ -92,7 +90,7 @@ export default class Login extends Component {
                   variant="outlined"
                   onClick={() => {
                     console.log("Clicked!");
-                    this.submit_user();
+                    this.log_in();
                   }}
                   type="button"
                 >

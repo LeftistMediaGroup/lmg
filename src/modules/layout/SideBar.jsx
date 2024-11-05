@@ -78,34 +78,20 @@ export default class SideBar extends React.Component {
         </Button>
       )
 
-    }
-
-  };
-
-  /*
-   else if (this.props.is_database_found === true) {
-        if (this.props.is_admin_created === true) {
-          return (
-            this.renderAccount()
-          )
-        } else if (this.props.is_database_found === false) {
-          return (
-            <Button
-              onClick={() => {
-                if (this.state) {
-                  this.props.getComponent("RegisterAdmin");
-                }
-              }}
-            >
-              Register Admin
-            </Button>
-          )
-  
-        }
-      }
-   */
-
-
+    } else if (this.props.is_database_found === true) {
+      return (
+        <Button
+          onClick={() => {
+            if (this.state) {
+              this.props.getComponent("LogIn");
+            }
+          }}
+        >
+          Login
+        </Button>
+      )
+    };
+  }
 
   renderAdminDashboard = () => {
     if (this.props.is_admin === true) {
