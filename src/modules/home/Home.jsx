@@ -2,13 +2,12 @@ import React, { Component } from "react";
 
 import { Card, CardContent } from "@mui/material";
 
-import SocialMediaManager from "./positions/SocialMediaManager.jsx";
 import Contact from "./Contact.jsx";
-import Programmer from "./positions/Programmer.jsx";
-import MemeDistributer from "./positions/MemeDistributer.jsx";
 import Educate from "./Educate/Educate.jsx";
 import Organize from "./Organize/Organize.jsx";
 import Resist from "./Resist/Resist.jsx";
+import Positions from "./positions/Positions.jsx";
+import Projects from "./projects/Projects.jsx";
 
 export default class Home extends Component {
   render() {
@@ -76,52 +75,11 @@ export default class Home extends Component {
             </div>
           </div>
 
-
-          <div className="row">
-            <div style={{ textAlign: "center" }}>
-              <h4>Projects</h4>
-
-              <p>
-                All projects are focused on a specific avenue of dismantling
-                Capitalism one brick at a time.
-              </p>
-            </div>
-
-            <div>
-              <Educate />
-              <Organize />
-              <Resist />
-            </div>
-          </div>
-
-
-          <Card>
-            <CardContent>
-              <div className="row">
-                <h4>Join Our Team!</h4>
-
-                <div className="col" style={{ padding: 15 }}>
-                  <MemeDistributer />
-                </div>
-
-                <div className="col" style={{ padding: 15 }}>
-                  <Programmer />
-                </div>
-
-                <div className="col" style={{ padding: 15 }}>
-                  <SocialMediaManager />
-                </div>
-
-              </div>
-            </CardContent>
-
-            <div className="row-centered">
-              <Contact />
-            </div>
-          </Card>
+          <Projects />
+          <Positions />
+          <Contact />
         </CardContent>
       </Card>
-
     );
   }
 }

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { Card, CardContent } from "@mui/material";
+import Forehead from "/Photos/Forehead.png"
 
 
 export default class LMG_memes extends Component {
@@ -14,6 +15,11 @@ export default class LMG_memes extends Component {
 
           <div style={{ textAlign: "center" }}>
             A facebook page for sharing leftist propaganda
+            <br />
+            <br />
+            
+            <img src={Forehead} style={{ maxHeight: 400, maxWidth: 250 }} />
+
           </div>
         </CardContent>
       </Card>

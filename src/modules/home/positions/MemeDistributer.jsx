@@ -11,31 +11,24 @@ export default class MemeDistributer extends Component {
 
   render() {
     return (
-      <Card>
+      <Card variant="outlined">
         <CardContent>
-          <div className="row">
-            <div className="col">
-              <Card variant="outlined">
-                <CardContent>
-                  <div style={{ textAlign: "center" }}>
-                    <h4>Meme Distributer</h4>
-                  </div>
-                  <div style={{ textAlign: "center" }}>
-                    Share Leftist Memes on a dedicated Facebook page <br />
-                  </div>
-
-                  <div style={{ textAlign: "left" }}>
-                    <br />
-                    Preferred skills:
-                    <ul>
-                      <li>Experience with Facebook</li>
-                      <li>Preferred - Experience with Facebook Pages</li>
-                    </ul>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+          <div style={{ textAlign: "center" }}>
+            <h4>Meme Distributer</h4>
           </div>
+          <div style={{ textAlign: "center" }}>
+            Share Leftist Memes on a dedicated Facebook page <br />
+          </div>
+
+          <div style={{ textAlign: "left" }}>
+            <br />
+            Preferred skills:
+            <ul>
+              <li>Experience with Facebook</li>
+              <li>Experience with Instagram / Tiktok</li>
+            </ul>
+          </div>
+          <br />
         </CardContent>
       </Card>
     );

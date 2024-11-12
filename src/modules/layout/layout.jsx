@@ -203,11 +203,9 @@ export default class Layout extends React.Component {
     return (
       <ThemeProvider theme={darkTheme}>
         <CssBaseline />
-        <div className="container" style={{ maxWidth: 1980, paddingTop: 30 }}>
+        <div className="container-fluid" style={{ maxWidth: 1980, paddingTop: 30 }}>
           <div className="row">
-            <div className="row">
-              {this.renderTopBar()}
-            </div>
+            {this.renderTopBar()}
 
             <div className="sidebar">
               <SideBar
