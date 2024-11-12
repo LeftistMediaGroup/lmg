@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import { Card, CardContent } from "@mui/material";
 
-import CanvasJSReact from "@canvasjs/react-charts";
 
 var CanvasJS = CanvasJSReact.CanvasJS;
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
@@ -24,10 +23,7 @@ export default class MoodChart extends Component {
           <CardContent>
             {" "}
             <div>
-              <CanvasJSChart
-                options={this.props.options}
-              /* onRef={ref => this.chart = ref} */
-              />
+              
             </div>
           </CardContent>
         </Card>
